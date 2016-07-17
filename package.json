@@ -1,0 +1,122 @@
+{
+  "name": "go-google-app-engine-rocket",
+  "description": "Go and ReactJS For Free on Google App Engine",
+  "version": "0.0.0",
+  "author": "Harald Rudell <c@haraldrudell.com> (http://haraldrudell.com)",
+  "license": "ISC",
+  "scripts": {
+    "start": "babel-node tools/run start"
+  },
+  "homepage": "https://github.com/haraldrudell/go-google-app-engine-rocket",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/haraldrudell/go-google-app-engine-rocket.git"
+  },
+  "bugs": {
+    "url": "https://github.com/haraldrudell/go-google-app-engine-rocket/issues"
+  },
+  "keywords": [
+    "React",
+    "ReactJS",
+    "go",
+    "golang",
+    "App Engine",
+    "Google App Engine",
+    "ECMAScript",
+    "ECMAScript 2016",
+    "babel",
+    "babel-cli"
+  ],
+  "devDependencies": {
+    "autoprefixer": "^6.3.2",
+    "autoprefixer-loader": "^3.2.0",
+    "babel-cli": "^6.10.1",
+    "babel-core": "^6.5.1",
+    "babel-eslint": "^4.1.8",
+    "babel-loader": "^6.2.2",
+    "babel-preset-es2015": "6.5.0",
+    "babel-preset-es2016": "^6.11.3",
+    "babel-preset-react": "6.5.0",
+    "babel-preset-react-hmre": "1.1.0",
+    "babel-preset-stage-0": "6.5.0",
+    "css-loader": "^0.23.1",
+    "cssrecipes-defaults": "^0.5.0",
+    "eslint-plugin-react": "^3.16.1",
+    "expose-loader": "^0.7.1",
+    "express": "^4.13.4",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.8.5",
+    "history": "2.0.0",
+    "lodash": "^4.3.0",
+    "normalize.css": "^3.0.3",
+    "postcss-functions": "^2.1.0",
+    "postcss-loader": "^0.8.0",
+    "precss": "^1.4.0",
+    "proxy-middleware": "^0.15.0",
+    "react": "^0.14.7",
+    "react-dom": "^0.14.7",
+    "react-helmet": "^3.0.0",
+    "react-redux": "^4.4.0",
+    "react-router": "^2.0.0",
+    "redux": "^3.3.1",
+    "redux-logger": "^2.6.1",
+    "style-loader": "^0.13.0",
+    "stylus-loader": "1.5.1",
+    "webpack": "^1.12.13",
+    "webpack-dev-middleware": "^1.5.1",
+    "webpack-hot-middleware": "^2.7.1",
+    "whatwg-fetch": "^0.11.0",
+    "when": "^3.7.7",
+    "which": "^1.2.10"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "es2016",
+      "react",
+      "stage-0"
+    ],
+    "env": {
+      "dev": {
+        "presets": [
+          "react-hmre"
+        ]
+      }
+    }
+  },
+  "eslintConfig": {
+    "rules": {
+      "indent": [
+        2,
+        2
+      ],
+      "quotes": [
+        2,
+        "single"
+      ],
+      "linebreak-style": [
+        2,
+        "unix"
+      ],
+      "semi": [
+        2,
+        "always"
+      ],
+      "react/jsx-uses-react": 2,
+      "react/jsx-uses-vars": 2,
+      "react/react-in-jsx-scope": 2
+    },
+    "env": {
+      "es6": true,
+      "browser": true,
+      "node": true
+    },
+    "ecmaFeatures": {
+      "jsx": true,
+      "modules": true
+    },
+    "plugins": [
+      "react"
+    ]
+  }
+}
