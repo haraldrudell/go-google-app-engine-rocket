@@ -25,23 +25,25 @@ ensures go and dependencies are present
 make
 */
 async function start() {
-  const absGoPath = path.join(__dirname, '..')
-  await run(goDependencies, absGoPath)
-  await run(make, absGoPath)
+  const paths = {
+    GOPATH: path.join(__dirname, '..'), // absolute path to project root
+    goSource: path.join(__dirname, '..', 'src', 'rocket'), // absolute to ./src/rocket
+  }
+  await run(goDependencies, paths)
+  await run(make, paths)
   console.log('start')
 }
 
-async function goDependencies(absGoPath) {
-console.log('go', absGoPath)
-  const goDoer = new GoDoer(absGoPath)
+async function goDependencies(paths) {
+  const goDoer = new GoDoer(paths)
 
   await goDoer.ensureGo()
   await goDoer.ensurePackage('github.com/olebedev/srlt')
   await goDoer.restore()
 }
 
-async function make(absGoPath) {
-  const makeDoer = new MakeDoer(absGoPath)
+async function make(paths) {
+  const makeDoer = new MakeDoer(paths)
 
   await makeDoer.ensureMake()
   await makeDoer.make('serve', )

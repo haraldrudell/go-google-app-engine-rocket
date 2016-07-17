@@ -2,5 +2,4 @@
 /node_modules
 /pkg
 /src/github.com
-/usr
-/vendor
+/src/rocket/vendor

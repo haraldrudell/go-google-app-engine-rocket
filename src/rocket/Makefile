@@ -9,7 +9,7 @@ BINDATA       = server/bindata.go
 BINDATA_FLAGS = -pkg=main -prefix=server/data
 BUNDLE        = server/data/static/build/bundle.js
 APP           = $(shell find client -type f)
-IMPORT_PATH   = $(shell pwd | sed "s|^$(GOPATH)/src/||g")
+IMPORT_PATH   = $(shell pwd | sed "s=^$(GOPATH)/src/==g")
 APP_NAME      = $(shell pwd | sed 's:.*/::')
 TARGET        = $(BIN)/$(APP_NAME)
 GIT_HASH      = $(shell git rev-parse HEAD)
@@ -24,10 +24,10 @@ clean:
 	@rm -rf $(BINDATA)
 
 $(ON):
-	echo go install $(IMPORT_PATH)/vendor/github.com/olebedev/on
-	echo bin: $(BIN)
-	echo gopath: $(GOPATH)
-	echo shell pwd: $(PP)
+	: shell pwd: $(PP)
+	: gopath: $(GOPATH)
+	: import $(IMPORT_PATH)
+	: go install $(IMPORT_PATH)/vendor/github.com/olebedev/on
 	go install $(IMPORT_PATH)/vendor/github.com/olebedev/on
 
 $(GO_BINDATA):

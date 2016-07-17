@@ -11,17 +11,21 @@ import fs from 'fs'
 import util from 'util'
 
 export class GoDoer {
-  constructor(goDirectory) {
-    this.goDirectory = goDirectory
-    this.goPath = goDirectory
-    this.cwd = path.join(absGoPath, 'src')
-    this.env = Object.assign({}, process.env, {GOPATH: this.goPath})
+  constructor(paths) {
+    this.goSource = paths.goSource
+    this.goPath = paths.GOPATH
+    this.spawnOpts = {
+      env: Object.assign({}, process.env, {GOPATH: paths.GOPATH}),
+      cwd: paths.goSource,
+    }
     this.ensureGo = this.ensureGo.bind(this)
     this.installGo = this.installGo.bind(this)
+    this.ensurePackage = this.ensurePackage.bind(this)
+    this.restore = this.restore.bind(this)
   }
 
   async ensureGo() {
-    if (this.go) {
+    if (!this.go) {
       let go = await which('go').catch(reason => {
         if (reason instanceof Error) {
           if (reason.code === 'ENOENT') return null // go is not on the PATH
@@ -38,25 +42,18 @@ export class GoDoer {
   }
 
   async ensurePackage(packageName) {
-    const packagePath = path.join(this.goDirectory, 'src', packageName)
+    const packagePath = path.join(this.goSource, packageName)
     const isInstalled = await new Promise(resolve => {
         fs.access(packagePath, err => resolve(!err))
       })
 
       if (!isInstalled) {
-        await doCommand(go, ['get', packageName], {env: this.env})
+        await doCommand(this.go, ['get', packageName], this.spawnOpts)
       }
     }
 
   async restore() {
-    const srlt = path.join(this.goDirectory, 'bin', 'srlt')
-    await doCommand(srlt, ['restore'], {env: this.env})
-  }
-
-  _getGoPath() {
-    return [this.goDirectory]
-      .concat(
-        process.env.PATH.split(':').filter(dir => dir[0] !== '.')
-      ).join(':')
+    const srlt = path.join(this.goPath, 'bin', 'srlt')
+    await doCommand(srlt, ['restore'], this.spawnOpts)
   }
 }
