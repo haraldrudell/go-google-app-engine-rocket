@@ -12,7 +12,7 @@ import util from 'util'
 export class MakeDoer {
   constructor(paths) {
     this.spawnOpts = {
-      env: Object.assign({}, process.env, {GOPATH: paths.GOPATH}),
+      env: Object.assign({}, process.env, {GOPATH: paths.GOPATH, PORT: paths.PORT}),
       cwd: paths.goSource,
     }
     this.ensureMake = this.ensureMake.bind(this)

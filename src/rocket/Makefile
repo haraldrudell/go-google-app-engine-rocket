@@ -14,7 +14,6 @@ APP_NAME      = $(shell pwd | sed 's:.*/::')
 TARGET        = $(BIN)/$(APP_NAME)
 GIT_HASH      = $(shell git rev-parse HEAD)
 LDFLAGS       = -w -X main.commitHash=$(GIT_HASH)
-PP = $(shell pwd)
 
 build: $(ON) $(GO_BINDATA) clean $(TARGET)
 
@@ -24,10 +23,6 @@ clean:
 	@rm -rf $(BINDATA)
 
 $(ON):
-	: shell pwd: $(PP)
-	: gopath: $(GOPATH)
-	: import $(IMPORT_PATH)
-	: go install $(IMPORT_PATH)/vendor/github.com/olebedev/on
 	go install $(IMPORT_PATH)/vendor/github.com/olebedev/on
 
 $(GO_BINDATA):

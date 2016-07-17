@@ -28,6 +28,7 @@ async function start() {
   const paths = {
     GOPATH: path.join(__dirname, '..'), // absolute path to project root
     goSource: path.join(__dirname, '..', 'src', 'rocket'), // absolute to ./src/rocket
+    PORT:5002
   }
   await run(goDependencies, paths)
   await run(make, paths)

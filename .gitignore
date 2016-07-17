@@ -2,4 +2,7 @@
 /node_modules
 /pkg
 /src/github.com
+/src/rocket/.pid
+/src/rocket/server/bindata.go
+/src/rocket/server/data
 /src/rocket/vendor
