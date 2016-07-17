@@ -5,6 +5,7 @@
   "author": "Harald Rudell <c@haraldrudell.com> (http://haraldrudell.com)",
   "license": "ISC",
   "scripts": {
+    "deploy": "babel-node tools/run deploy",
     "start": "babel-node tools/run start"
   },
   "homepage": "https://github.com/haraldrudell/go-google-app-engine-rocket",
@@ -118,5 +119,9 @@
     "plugins": [
       "react"
     ]
+  },
+  "dependencies": {
+    "unzip": "^0.1.11",
+    "xml2js": "^0.4.17"
   }
 }
